@@ -1,5 +1,7 @@
 package com.example.cleanarchitectureapplication.data.model
 
+import com.example.cleanarchitectureapplication.domain.model.Meal
+
 data class MealDTO(
     val dateModified: String?,
     val idMeal: String,
@@ -55,3 +57,11 @@ data class MealDTO(
     val strTags: String,
     val strYoutube: String
 )
+
+fun MealDTO.toDomainMeal():Meal{
+    return Meal(
+        mealId = this.idMeal,
+        name=  this.strMeal?:"",
+        image = this.strImageSource?:""
+    )
+}
